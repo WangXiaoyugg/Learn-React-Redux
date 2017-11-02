@@ -1,36 +1,19 @@
-import { createStore } from 'redux';
+import React from 'react'
+import ReactDom from 'react-dom'
+import {createStore} from 'redux';
 
-//新建store
-//通过reducer建立
-//根据老的state 和 action 生成新的state
+import App from './app'
+import { counter } from './index.redux'
 
-function counter(state=0,action){
-	switch (action.type) {
-		case '加机关枪':
-			return state+1
-		
-		case '减机关枪':
-			return state-1
+const store = createStore(counter)
 
-		default:
-			return 10
-			break;
-	}
+
+
+
+function render(){
+	ReactDom.render(<App store={store}/>,document.getElementById('root'));
 }
 
-const store = createStore(counter);
+render();
 
-const init = store.getState();
-console.log(init);
-
-function listener(){
-	const current = store.getState()
-	console.log(`现有机枪${current}吧`)
-}
-
-store.subscribe(listener);
-
-//派发事件
-store.dispatch({type:'加机关枪'});
-store.dispatch({type:"加机关枪"});
-store.dispatch({type:"减机关枪"});
+store.subscribe(render);
