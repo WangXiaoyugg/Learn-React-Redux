@@ -25,6 +25,6 @@ export function addGUN(){
 
 }
 
-export function removeGun(){
+export function removeGUN(){
 	return {type:REMOVE_GUN};
 }
