@@ -7,29 +7,30 @@ import { BrowserRouter,Route,Link,Redirect,Switch } from 'react-router-dom'
 
 
 
-import { counter } from './index.redux'
+// import { counter } from './index.redux'
+import reducers from './reducers'
 import Auth from './auth.js'
 import Dashboard from './dashboard.js'
 
 
-const store = createStore(counter, compose(
+const store = createStore(reducers, compose(
 	applyMiddleware(thunk),
 	window.devToolsExtension ? window.devToolsExtension(): f => f	
 ))
 
 
-class Test extends  React.Component {
-	constructor(props){
-		super(props)
-	}
+// class Test extends  React.Component {
+// 	constructor(props){
+// 		super(props)
+// 	}
 
-	render(){
-		const props = this.props;
-		return (
-			<h2>测试组件 {props.match.params.location}</h2>	
-		)
-	}
-}
+// 	render(){
+// 		const props = this.props;
+// 		return (
+// 			<h2>测试组件 {props.match.params.location}</h2>	
+// 		)
+// 	}
+// }
 
 // 登录
 	// 没有登录信息，统一跳转到login
