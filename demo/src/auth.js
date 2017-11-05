@@ -9,10 +9,7 @@ import { Redirect } from 'react-router-dom'
 	{login}
 )
 class Auth extends React.Component {
-	constructor(props){
-		super(props)
-	}
-
+	
 	render(){
 		const loginToDashboard = <Redirect to='/dashboard'></Redirect>
 		return (

@@ -18,11 +18,9 @@ function Paobinglian(){
 	{ logout }
 )
 class Dashboard extends React.Component {
-	constructor(props){
-		super(props)
-	}
 
 	render(){
+		const match = this.props.match
 		const redirectToLogin = <Redirect to='/login'></Redirect>
 		const signOut = <button onClick={this.props.logout}>注销</button>
 		const app = (
@@ -31,18 +29,18 @@ class Dashboard extends React.Component {
 				{this.props.isAuth ? signOut : null }	
 				<ul>
 					<li>
-						<Link to='/dashboard'>一营</Link>
+						<Link to={`${match.url}/`}>一营</Link>
 					</li>
 					<li>
-						<Link to='/dashboard/erying'>二营</Link>
+						<Link to={`${match.url}/erying`}>二营</Link>
 					</li>
 					<li>
-						<Link to='/dashboard/paobinglian'>炮兵连</Link>
+						<Link to={`${match.url}/paobinglian`}>炮兵连</Link>
 					</li>				
 				</ul>
-				<Route path='/dashboard' exact component={App}></Route>
-				<Route path='/dashboard/erying' component={Erying}></Route>
-				<Route path='/dashboard/paobinglian' component={Paobinglian}></Route>
+				<Route path={`${match.url}/`} exact component={App}></Route>
+				<Route path={`${match.url}/erying`} component={Erying}></Route>
+				<Route path={`${match.url}/paobinglian`} component={Paobinglian}></Route>
 			</div>
 		)
 		return this.props.isAuth ? app : redirectToLogin
