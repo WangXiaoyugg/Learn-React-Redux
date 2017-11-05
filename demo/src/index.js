@@ -3,7 +3,7 @@ import ReactDom from 'react-dom'
 import { createStore,applyMiddleware, compose } from 'redux';
 import thunk  from 'redux-thunk'
 import { Provider } from 'react-redux';
-import { BrowserRouter,Route,Link } from 'react-router-dom'
+import { BrowserRouter,Route,Link,Redirect,Switch } from 'react-router-dom'
 
 
 import App from './app'
@@ -23,6 +23,18 @@ function Paobinglian(){
 	return <h2>炮兵连</h2>
 }
 
+class Test extends  React.Component {
+	constructor(props){
+		super(props)
+	}
+
+	render(){
+		const props = this.props;
+		return (
+			<h2>测试组件 {props.match.params.location}</h2>	
+		)
+	}
+}
 
 ReactDom.render(
 		(<Provider store={store}>
@@ -38,9 +50,13 @@ ReactDom.render(
 						<li>
 							<Link to='/paobinglian'>炮兵连</Link>
 						</li>
-						<Route path='/' exact component={App}></Route>
-						<Route path='/erying' component={Erying}></Route>
-						<Route path='/paobinglian' component={Paobinglian}></Route>
+						<Switch>
+							{/*只渲染第一个命中的组件*/}
+							<Route path='/' exact component={App}></Route>
+							<Route path='/erying' component={Erying}></Route>
+							<Route path='/paobinglian' component={Paobinglian}></Route>
+							<Route path='/:location' component={Test}></Route>
+						</Switch>					
 					</ul>
 				</div>
 			</BrowserRouter>
