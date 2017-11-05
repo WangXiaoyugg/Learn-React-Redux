@@ -6,8 +6,10 @@ import { Provider } from 'react-redux';
 import { BrowserRouter,Route,Link,Redirect,Switch } from 'react-router-dom'
 
 
-import App from './app'
+
 import { counter } from './index.redux'
+import Auth from './auth.js'
+import Dashboard from './dashboard.js'
 
 
 const store = createStore(counter, compose(
@@ -15,13 +17,6 @@ const store = createStore(counter, compose(
 	window.devToolsExtension ? window.devToolsExtension(): f => f	
 ))
 
-function Erying(){
-	return <h2>二营</h2>
-}
-
-function Paobinglian(){
-	return <h2>炮兵连</h2>
-}
 
 class Test extends  React.Component {
 	constructor(props){
@@ -36,29 +31,23 @@ class Test extends  React.Component {
 	}
 }
 
+// 登录
+	// 没有登录信息，统一跳转到login
+// 页面	导航+显示+注销	
+	// 一营
+	// 二营
+	// 骑兵连
+//router + redux
+
 ReactDom.render(
 		(<Provider store={store}>
 			<BrowserRouter>
-				<div>
-					<ul>
-						<li>
-							<Link to='/'>一营</Link>
-						</li>
-						<li>
-							<Link to='/erying'>二营</Link>
-						</li>
-						<li>
-							<Link to='/paobinglian'>炮兵连</Link>
-						</li>
-						<Switch>
-							{/*只渲染第一个命中的组件*/}
-							<Route path='/' exact component={App}></Route>
-							<Route path='/erying' component={Erying}></Route>
-							<Route path='/paobinglian' component={Paobinglian}></Route>
-							<Route path='/:location' component={Test}></Route>
-						</Switch>					
-					</ul>
-				</div>
+				<Switch>
+					{/*只渲染第一个命中的组件*/}
+					<Route path='/login'  component={Auth}></Route>
+					<Route path='/dashboard' component={Dashboard}></Route>
+					<Redirect to='/dashboard'></Redirect>
+				</Switch>
 			</BrowserRouter>
 		</Provider>),
 		document.getElementById('root')
