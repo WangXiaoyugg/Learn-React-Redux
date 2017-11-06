@@ -134,9 +134,12 @@ nodemon server.js
 brew install mongodb
 mongod --config /usr/local/ect/mongod.conf
 mongo 启动mongodb
+ 
+nohup mongod --config /usr/local/etc/mongod.conf &
 
 - nodejs mongoose 模块连接和操作mongodb
 npm install mongoose -g
+
 ```
 const mongoose = require('mongoose');
 //链接 mongo 并且使用 imooc集合
@@ -179,3 +182,36 @@ User.update({user:'小明'},{'$set':{age:26}},function(err,doc){
 1. mongodb独立工具函数
 2. express使用 body-parser 支持 post 参数
 3. cookie-parser 支持 cookie 信息
+
+
+
+##### React-Router4 
+- 官方路由库
+- 单页应用
+- BrowserRouter 包裹整个应用
+- Router 对应的路由 可嵌套
+
+
+#### 前后端联调
+- axios 发送数据,端口不一致,使用proxy 配置转发
+- axios 拦截器，统一的loading处理
+- redux 使用异步数据，渲染页面
+
+#### 登录注册
+- 页面文件结构
+组件放在 Component/
+页面放在 Container/
+页面入口处获取用户信息，决定跳转到哪个页面
+
+- web开发模式
+json 通信
+基于cookie 验证
+cookie 类似于身份证，登录后服务端返回，有了cookie 可以访问受限制资源
+页面cookie的管理浏览器会自动处理
+
+- 前后端实现
+用户加载页面  => 带着cookie 向后端获取用户信息  => 用户加载页面
+
+已登陆 => app 内部页面
+未登录 => 登录页面 => 登录成功,前端存储cookie => app内部页面 
+
