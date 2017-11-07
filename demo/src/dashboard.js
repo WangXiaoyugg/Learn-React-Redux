@@ -1,6 +1,7 @@
 import React from  'react'
 import { Link, Route,Redirect } from 'react-router-dom'
 import { connect  } from 'react-redux'
+import { Button } from 'antd-mobile'
 
 import App from './app'
 import {logout} from './auth.redux.js' 
@@ -22,7 +23,7 @@ class Dashboard extends React.Component {
 	render(){
 		const match = this.props.match
 		const redirectToLogin = <Redirect to='/login'></Redirect>
-		const signOut = <button onClick={this.props.logout}>注销</button>
+		const signOut = <Button  type='primary' onClick={this.props.logout}>注销</Button>
 		const app = (
 			<div>
 				<h1>独立团</h1>

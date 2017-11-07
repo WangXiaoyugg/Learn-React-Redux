@@ -2,6 +2,8 @@ import React from  'react'
 import { connect } from 'react-redux'
 import { login } from './auth.redux.js'
 import { Redirect } from 'react-router-dom'
+import { Button } from 'antd-mobile'
+
 
 //两个 reducers , 而redux是单向数据流必须进行合并成一reducers
 @connect(
@@ -16,7 +18,7 @@ class Auth extends React.Component {
 			<div>
 				{this.props.isAuth ? loginToDashboard : null  }
 				<h2>你没有权限只有登录才能查看</h2>
-				<button onClick={this.props.login}>登录</button>
+				<Button type="primary" onClick={this.props.login}>登录</Button>
 			</div>
 		)
 	}
