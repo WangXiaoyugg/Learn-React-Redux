@@ -17,36 +17,38 @@ const User = mongoose.model('user',new mongoose.Schema({
 }))
 
 // 新建用户
-// User.create({
-// 	user:'xiaohua',
-// 	age:9
-// },(err,doc) => {
-// 	if(!err){
-// 		console.log(doc)
-// 	}else{
-// 		console.log(err)
-// 	}
-// })
-
-//删除用户
-// User.remove({age:10},(err,doc) => {
-// 	console.log(doc)
-// })
-
-User.update({'user':"xiaohua"},{$set:{age:100}},(err,doc) =>{
-	console.log(doc);
+User.create({
+	user:'xiaohua',
+	age:20
+},(err,doc) => {
+	if(!err){
+		console.log(doc)
+	}else{
+		console.log(err)
+	}
 })
+
+// 删除用户
+User.remove({age:20},(err,doc) => {
+	console.log(doc)
+})
+
+// User.update({'user':"xiaohua"},{$set:{age:100}},(err,doc) =>{
+// 	console.log(doc);
+// })
 
 //查询用户
 const app = express();
 
 
 app.get('/',(req,res) => {
-	res.send('<h1>hello world</h1>')
+	User.find({},function(err,doc){
+		 res.json(doc);
+	})
 })
 
 app.get('/data',(req,res) => {
-	User.findOne({user:"xiaohua"},function(err,doc){
+	User.find({},function(err,doc){
 		 res.json(doc);
 	})
 })
