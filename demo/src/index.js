@@ -5,9 +5,9 @@ import thunk  from 'redux-thunk'
 import { Provider } from 'react-redux';
 import { BrowserRouter,Route,Redirect,Switch } from 'react-router-dom'
 
+import './config'
+import 'antd-mobile/dist/antd-mobile.css'
 
-
-// import { counter } from './index.redux'
 import reducers from './reducers'
 import Auth from './auth.js'
 import Dashboard from './dashboard.js'
