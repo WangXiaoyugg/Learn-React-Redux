@@ -11,9 +11,9 @@ Router.get('/list',function(req,res){
 	})
 })
 
-Router.get('/register',function(req,res) => {
-	console.log(req.body.data)
-	const {user,pwd,type} = req.body.data
+Router.post('/register',function(req,res){
+	console.log(req.body)
+	const {user,pwd,type} = req.body
 	//没有做验证
 	User.findOne({user:user},function(err,doc){
 		if(doc){

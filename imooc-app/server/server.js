@@ -2,7 +2,7 @@
 const express = require('express')
 const userRouter = require('./user')
 const mongoose = require('mongoose')
-const cookieParser = require('cookie-parse')
+const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 
 const app = express()
