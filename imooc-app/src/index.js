@@ -12,7 +12,7 @@ import reducers from './reducers'
 
 import Login from './container/login/login.js'
 import Register from './container/register/register.js' 
-
+import AuthRoute from './component/authRoute/authRoute.js'
 
 
 const store = createStore(reducers, compose(
@@ -26,6 +26,7 @@ ReactDom.render(
 		(<Provider store={store}>
 			<BrowserRouter>
 				<div>
+					<AuthRoute></AuthRoute>
 					<Route path='/login' component={Login}></Route>
 					<Route path='/register' component={Register}></Route>
 				</div>
