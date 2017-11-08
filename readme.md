@@ -215,3 +215,21 @@ cookie 类似于身份证，登录后服务端返回，有了cookie 可以访问
 已登陆 => app 内部页面
 未登录 => 登录页面 => 登录成功,前端存储cookie => app内部页面 
 
+- 删除src中的文件，只保留 config.js index.js job.png reducer.js
+reducer {};
+
+- package.json
+babel-plugin-import ant-design mobile
+transform-decorators-legacy
+proxy 配置
+express cookie-parser
+
+- 新建文件夹
+container/login/login.js
+container/register/register.js
+component/logo/logo.js
+
+
+
+
+
