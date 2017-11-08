@@ -7,6 +7,7 @@ import { BrowserRouter,Route,Redirect,Switch } from 'react-router-dom'
 
 import './config'
 import 'antd-mobile/dist/antd-mobile.css'
+import './index.css'
 
 import reducers from './reducers'
 
