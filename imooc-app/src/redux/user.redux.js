@@ -42,12 +42,10 @@ export function loginSuccess(data){
 }
 
 export function login({user,pwd}){
-	console.log('开始验证密码和用户名了')
 	if(!user || !pwd){
-		console.log(user,pwd)
 		return errorMsg('用户名和密码必须输入')
 	}
-	console.log('开始发送请求了')
+
 	return dispatch => {
 		axios.post('/user/login',{user,pwd}).then( res => {
 			if(res.status === 200 && res.data.code === 0){
