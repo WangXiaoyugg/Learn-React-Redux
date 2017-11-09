@@ -11,11 +11,13 @@ import './index.css'
 
 import reducers from './reducers'
 
+import AuthRoute from './component/authRoute/authRoute.js'
 import Login from './container/login/login.js'
 import Register from './container/register/register.js' 
 import BossInfo from './container/bossinfo/bossinfo.js'
+import GeniusInfo from './container/geniusinfo/geniusinfo.js'
 
-import AuthRoute from './component/authRoute/authRoute.js'
+
 
 
 const store = createStore(reducers, compose(
@@ -30,7 +32,7 @@ ReactDom.render(
 			<BrowserRouter>
 				<div>
 					<AuthRoute></AuthRoute>
-
+					<Route path='/geniusinfo' component={GeniusInfo}></Route>
 					<Route path='/bossinfo' component={BossInfo}></Route>
 					<Route path='/login' component={Login}></Route>
 					<Route path='/register' component={Register}></Route>

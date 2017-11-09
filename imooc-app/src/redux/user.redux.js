@@ -1,15 +1,12 @@
 import axios from 'axios'
 import {getRedirectPath} from '../util.js'
 
-// const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
-// const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 
 const AUTH_SUCCESS = 'AUTH_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
 const LOAD_DATA ='LOAD_DATA'
 
 const initState = {
-	// isAuth:false,
 	msg:'',
 	user:'',
 	type:''
@@ -30,7 +27,8 @@ export function user(state=initState,action){
 	
 }
 
-function authSuccess(data){
+function authSuccess(obj){
+	const {pwd,...data} = obj
 	return {type:AUTH_SUCCESS,payload:data}
 }
 
