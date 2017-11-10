@@ -3,7 +3,7 @@ import ReactDom from 'react-dom'
 import { createStore,applyMiddleware, compose } from 'redux';
 import thunk  from 'redux-thunk'
 import { Provider } from 'react-redux';
-import { BrowserRouter,Route} from 'react-router-dom'
+import { BrowserRouter,Route,Switch} from 'react-router-dom'
 
 import './config'
 import 'antd-mobile/dist/antd-mobile.css'
@@ -13,6 +13,8 @@ import reducers from './reducers'
 
 import AuthRoute from './component/authRoute/authRoute.js'
 import Login from './container/login/login.js'
+import Dashboard from './component/dashboard/dashboard.js'
+
 import Register from './container/register/register.js' 
 import BossInfo from './container/bossinfo/bossinfo.js'
 import GeniusInfo from './container/geniusinfo/geniusinfo.js'
@@ -32,10 +34,13 @@ ReactDom.render(
 			<BrowserRouter>
 				<div>
 					<AuthRoute></AuthRoute>
-					<Route path='/geniusinfo' component={GeniusInfo}></Route>
-					<Route path='/bossinfo' component={BossInfo}></Route>
-					<Route path='/login' component={Login}></Route>
-					<Route path='/register' component={Register}></Route>
+					<Switch>
+						<Route path='/geniusinfo' component={GeniusInfo}></Route>
+						<Route path='/bossinfo' component={BossInfo}></Route>
+						<Route path='/login' component={Login}></Route>
+						<Route path='/register' component={Register}></Route>
+						<Route component={Dashboard}></Route>
+					</Switch>
 				</div>
 			</BrowserRouter>
 		</Provider>),
