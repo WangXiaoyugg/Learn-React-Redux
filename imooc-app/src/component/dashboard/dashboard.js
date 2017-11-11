@@ -67,7 +67,7 @@ function Msg(){
  						))}
  					</Switch>
  				</div>		
- 				<NavlinkBar className='am-tab-bar'  data={navList}></NavlinkBar>
+ 				<NavlinkBar data={navList}></NavlinkBar>
  			</div>
  		)
  	}
