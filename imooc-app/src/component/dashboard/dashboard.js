@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { NavBar } from 'antd-mobile'
+import NavlinkBar from '../navlink/navlink.js'
 
 function Boss(){
 	return <h2>Boss 首页</h2>
@@ -55,7 +56,7 @@ function User(){
  			{
  				path:'/me',
  				text:'我',
- 				icon:'me',
+ 				icon:'user',
  				title:'个人中心',
  				component:User,
  			},
@@ -63,10 +64,11 @@ function User(){
 
  		return (
  			<div>
- 				<NavBar mode='dark'>
+ 				<NavBar className='am-navbar ' mode='dark'>
  					{navList.find(v => v.path === pathname).title}
- 				</NavBar>	
- 				 <h2>Dashboard footer</h2>
+ 				</NavBar>
+ 				<div>Content</div>		
+ 				<NavlinkBar className='am-tab-bar'  data={navList}></NavlinkBar>
  			</div>
  		)
  	}
