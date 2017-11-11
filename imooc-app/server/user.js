@@ -7,9 +7,11 @@ const Router = express.Router()
 const _filter = {pwd:0,__v:0}
 
 Router.get('/list',function(req,res){
-	User.find({},function(err,doc){
+	const {type} = req.query
+
+	User.find({type},function(err,doc){
 		if(err) throw new Error(err)
-		return res.json(doc)	
+		return res.json({code:0,data:doc})	
 	})
 })
 
@@ -24,7 +26,7 @@ Router.get('/remove',function(req,res){
 Router.post('/update',function(req,res){
 	const userId = req.cookies.userId
 	if(!userId){
-		return json.dumps({code:1})
+		return res.json({code:1})
 	}
 	
 	const body = req.body

@@ -2,10 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { NavBar } from 'antd-mobile'
 import NavlinkBar from '../navlink/navlink.js'
-
-function Boss(){
-	return <h2>Boss 首页</h2>
-}
+import {Switch, Route} from 'react-router-dom'
+import Boss from '../../component/boss/boss'
 
 function Genius(){
 	return <h2>Genius 首页</h2>
@@ -64,10 +62,16 @@ function User(){
 
  		return (
  			<div>
- 				<NavBar className='am-navbar ' mode='dark'>
+ 				<NavBar className='fix-header ' mode='dark'>
  					{navList.find(v => v.path === pathname).title}
  				</NavBar>
- 				<div>Content</div>		
+ 				<div style={{marginTop:45}}>
+ 					<Switch>
+ 						{navList.map(v =>(
+ 							<Route key={v.path} path={v.path} component={v.component}/>
+ 						))}
+ 					</Switch>
+ 				</div>		
  				<NavlinkBar className='am-tab-bar'  data={navList}></NavlinkBar>
  			</div>
  		)
