@@ -5,6 +5,25 @@ import { connect } from 'react-redux'
 import { login } from '../../redux/user.redux.js'
 import { Redirect } from 'react-router-dom'
 
+//高阶组件，函数可以当参数，函数可以当返回值
+function hello(){
+	console.log('hello')
+}
+
+function WrapperHello(fn){
+	return function(){
+		console.log('before say hello')
+		fn()
+		console.log('after say hello')
+	}
+
+}
+
+hello = WrapperHello(hello)
+hello()
+
+
+
 @connect(
 	state => state.user,
 	{ login }
