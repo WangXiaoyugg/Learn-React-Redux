@@ -12,6 +12,11 @@ const app = express()
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
+
+// Chat.remove({},function(e,d){
+
+// })
+
 io.on('connection',function(socket){
 	console.log('user login')
 	socket.on('sendmsg',(data)=>{
@@ -20,7 +25,7 @@ io.on('connection',function(socket){
 		const chatid = [from,to].sort().join('_')
 		Chat.create({chatid,from,to,content:msg},function(err,doc){
 			console.log('doc',doc)
-			io.emit('recvmsg',Object.assign({},doc))
+			io.emit('recvmsg',Object.assign({},doc._doc))
 		})
 
 		// console.log(data)
