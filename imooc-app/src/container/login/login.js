@@ -17,23 +17,35 @@ class Hello extends React.Component {
 //属性代理
 function WrapperHello(Comp){
 
-	class WrapComp extends React.Component{
-
+	//反向继承
+	class WrapComp extends Comp{
+		componentDidMount(){
+			console.log('高阶组件新增的生命周期')
+		}
 		render(){
-			return(
-				<div>
-					<p>高阶组件</p>
-					<Comp {...this.props}></Comp>
-				</div>
-
-			)
-			
+			return <Comp></Comp>
 		}
 	}
+
+
+
+
+	// class WrapComp extends React.Component{
+
+	// 	render(){
+	// 		return(
+	// 			<div>
+	// 				<p>高阶组件</p>
+	// 				<Comp {...this.props}></Comp>
+	// 			</div>
+
+	// 		)
+			
+	// 	}
+	// }
 	return WrapComp
 }
 
-// Hello = WrapperHello(Hello)
 
 
 @connect(
