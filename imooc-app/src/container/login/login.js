@@ -5,23 +5,35 @@ import { connect } from 'react-redux'
 import { login } from '../../redux/user.redux.js'
 import { Redirect } from 'react-router-dom'
 
-//高阶组件，函数可以当参数，函数可以当返回值
-function hello(){
-	console.log('hello')
-}
 
-function WrapperHello(fn){
-	return function(){
-		console.log('before say hello')
-		fn()
-		console.log('after say hello')
+
+@WrapperHello
+class Hello extends React.Component {
+	render(){
+		return <h2>hello I love react and redux</h2>
 	}
-
 }
 
-hello = WrapperHello(hello)
-hello()
+//属性代理
+function WrapperHello(Comp){
 
+	class WrapComp extends React.Component{
+
+		render(){
+			return(
+				<div>
+					<p>高阶组件</p>
+					<Comp {...this.props}></Comp>
+				</div>
+
+			)
+			
+		}
+	}
+	return WrapComp
+}
+
+// Hello = WrapperHello(Hello)
 
 
 @connect(
@@ -56,6 +68,7 @@ class Login extends React.Component {
 	render(){
 		return (
 			<div>
+				<Hello/>
 				{this.props.redirectTo && this.props.redirectTo !== '/login' ? <Redirect to={this.props.redirectTo}></Redirect> : null}
 				<Logo></Logo>
 				<WingBlank>
