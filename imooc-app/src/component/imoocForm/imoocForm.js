@@ -11,7 +11,6 @@ export default function imoocForm(Comp){
 
 
 		handleChange(key,val){
-			console.log(key,val)
 			this.setState({
 				[key]:val
 			})
