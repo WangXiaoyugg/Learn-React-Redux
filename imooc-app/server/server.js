@@ -4,6 +4,8 @@ const userRouter = require('./user')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const model = require('./model.js')
+const Chat = model.getModel('chat')
 const app = express()
 
 //work with express
@@ -13,8 +15,16 @@ const io = require('socket.io')(server);
 io.on('connection',function(socket){
 	console.log('user login')
 	socket.on('sendmsg',(data)=>{
-		console.log(data)
-		io.emit('recvmsg',data);
+
+		const {from,to,msg} = data
+		const chatid = [from,to].sort().join('_')
+		Chat.create({chatid,from,to,content:msg},function(err,doc){
+			console.log('doc',doc)
+			io.emit('recvmsg',Object.assign({},doc))
+		})
+
+		// console.log(data)
+		// io.emit('recvmsg',data);
 	})
 })
 
